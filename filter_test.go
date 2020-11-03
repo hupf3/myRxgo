@@ -22,7 +22,7 @@ func TestDebounce(t *testing.T) {
 
 func TestDistinct(t *testing.T) {
 	res := []int{}
-	ob := rxgo.Just(10, 20, 30, 40, 50).Map(func(x int) int {
+	ob := rxgo.Just(10, 20, 30, 40, 50, 30, 40).Map(func(x int) int {
 		return x
 	}).Distinct()
 	ob.Subscribe(func(x int) {
@@ -68,13 +68,13 @@ func TestLast(t *testing.T) {
 
 func TestSample(t *testing.T) {
 	res := []int{}
-	rxgo.Just(1, 2, 3, 4, 3, 1, 2, 4, 3).Map(func(x int) int {
+	rxgo.Just(10, 20, 30, 40, 50).Map(func(x int) int {
 		time.Sleep(2 * time.Millisecond)
 		return x
-	}).Sample(5 * time.Millisecond).Subscribe(func(x int) {
+	}).Sample(3 * time.Millisecond).Subscribe(func(x int) {
 		res = append(res, x)
 	})
-	assert.Equal(t, []int{6, 6, 4, 6}, res, "SkipLast Test Error!")
+	assert.Equal(t, []int{20, 30, 40, 50}, res, "SkipLast Test Error!")
 
 }
 
