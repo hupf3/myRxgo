@@ -4,12 +4,13 @@ import (
 	"testing"
 	"time"
 
+	rxgo "github.com/hupf3/myRxgo"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestDebounce(t *testing.T) {
 	res := []int{}
-	ob := Just(10, 20, 30, 40, 50).Map(func(x int) int {
+	ob := rxgo.Just(10, 20, 30, 40, 50).Map(func(x int) int {
 		return x
 	}).Debounce(1000000)
 	ob.Subscribe(func(x int) {
@@ -21,7 +22,7 @@ func TestDebounce(t *testing.T) {
 
 func TestDistinct(t *testing.T) {
 	res := []int{}
-	ob := Just(10, 20, 30, 40, 50).Map(func(x int) int {
+	ob := rxgo.Just(10, 20, 30, 40, 50).Map(func(x int) int {
 		return x
 	}).Distinct()
 	ob.Subscribe(func(x int) {
@@ -32,7 +33,7 @@ func TestDistinct(t *testing.T) {
 
 func TestElementAt(t *testing.T) {
 	res := []int{}
-	ob := Just(10, 20, 30, 40, 50).Map(func(x int) int {
+	ob := rxgo.Just(10, 20, 30, 40, 50).Map(func(x int) int {
 		return x
 	}).ElementAt(4)
 	ob.Subscribe(func(x int) {
@@ -43,7 +44,7 @@ func TestElementAt(t *testing.T) {
 
 func TestFirst(t *testing.T) {
 	res := []int{}
-	ob := Just(10, 20, 30, 40, 50).Map(func(x int) int {
+	ob := rxgo.Just(10, 20, 30, 40, 50).Map(func(x int) int {
 		return x
 	}).First()
 	ob.Subscribe(func(x int) {
@@ -55,7 +56,7 @@ func TestFirst(t *testing.T) {
 
 func TestLast(t *testing.T) {
 	res := []int{}
-	ob := Just(10, 20, 30, 40, 50).Map(func(x int) int {
+	ob := rxgo.Just(10, 20, 30, 40, 50).Map(func(x int) int {
 		return x
 	}).Last()
 	ob.Subscribe(func(x int) {
@@ -67,7 +68,7 @@ func TestLast(t *testing.T) {
 
 func TestSample(t *testing.T) {
 	res := []int{}
-	Just(1, 2, 3, 4, 3, 1, 2, 4, 3).Map(func(x int) int {
+	rxgo.Just(1, 2, 3, 4, 3, 1, 2, 4, 3).Map(func(x int) int {
 		time.Sleep(2 * time.Millisecond)
 		return x
 	}).Sample(5 * time.Millisecond).Subscribe(func(x int) {
@@ -79,7 +80,7 @@ func TestSample(t *testing.T) {
 
 func TestSkip(t *testing.T) {
 	res := []int{}
-	ob := Just(10, 20, 30, 40, 50).Map(func(x int) int {
+	ob := rxgo.Just(10, 20, 30, 40, 50).Map(func(x int) int {
 		return x
 	}).Skip(4)
 	ob.Subscribe(func(x int) {
@@ -90,7 +91,7 @@ func TestSkip(t *testing.T) {
 
 func TestSkipLast(t *testing.T) {
 	res := []int{}
-	ob := Just(10, 20, 30, 40, 50).Map(func(x int) int {
+	ob := rxgo.Just(10, 20, 30, 40, 50).Map(func(x int) int {
 		return x
 	}).SkipLast(4)
 	ob.Subscribe(func(x int) {
@@ -101,7 +102,7 @@ func TestSkipLast(t *testing.T) {
 
 func TestTake(t *testing.T) {
 	res := []int{}
-	ob := Just(10, 20, 30, 40, 50).Map(func(x int) int {
+	ob := rxgo.Just(10, 20, 30, 40, 50).Map(func(x int) int {
 		return x
 	}).Take(4)
 	ob.Subscribe(func(x int) {
@@ -112,7 +113,7 @@ func TestTake(t *testing.T) {
 
 func TestTakeLast(t *testing.T) {
 	res := []int{}
-	ob := Just(10, 20, 30, 40, 50).Map(func(x int) int {
+	ob := rxgo.Just(10, 20, 30, 40, 50).Map(func(x int) int {
 		return x
 	}).TakeLast(4)
 	ob.Subscribe(func(x int) {

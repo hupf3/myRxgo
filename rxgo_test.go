@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"testing"
 	"time"
+
+	rxgo "github.com/hupf3/myRxgo"
 )
 
 type observer struct {
@@ -25,15 +27,15 @@ func (o observer) OnCompleted() {
 func TestMain(m *testing.M) {
 
 	// test Subscribe on any
-	ob := Just(10, 20, 30).Map(dd)
-	ob1 := ob.Map(dd).SubscribeOn(ThreadingIO).Debug(true).Map(dd)
+	ob := rxgo.Just(10, 20, 30).Map(dd)
+	ob1 := ob.Map(dd).SubscribeOn(rxgo.ThreadingIO).Debug(true).Map(dd)
 	ob1.Subscribe(func(x int) {
 		fmt.Println("Just", x)
 	})
 
-	ob = Just(0, 12, 7, 34, 2).Filter(func(x int) bool {
+	ob = rxgo.Just(0, 12, 7, 34, 2).Filter(func(x int) bool {
 		return x < 10
-	}).SubscribeOn(ThreadingIO)
+	}).SubscribeOn(rxgo.ThreadingIO)
 	ob.Subscribe(
 		func(x int) {
 			fmt.Println("Filter", x)
@@ -43,12 +45,12 @@ func TestMain(m *testing.M) {
 func dd(x int) int { return 2 * x }
 
 func TestObserver(t *testing.T) {
-	var s Observer = observer{"test observer"}
-	Just(1, 2, 3).Subscribe(s)
+	var s rxgo.Observer = observer{"test observer"}
+	rxgo.Just(1, 2, 3).Subscribe(s)
 }
 
 func TestTreading(t *testing.T) {
-	flow := Just(10, 20, 30).Map(func(x int) int {
+	flow := rxgo.Just(10, 20, 30).Map(func(x int) int {
 		return x + 1
 	})
 	/* 	.FlatMap(func(x int) *rxgo.Observable {
