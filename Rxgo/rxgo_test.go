@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	rxgo "github.com/hupf3/myRxgo"
+	rxgo "github.com/hupf3/myRxgo/Rxgo"
 )
 
 type observer struct {

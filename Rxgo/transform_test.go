@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	rxgo "github.com/hupf3/myRxgo"
+	rxgo "github.com/hupf3/myRxgo/Rxgo"
 	"github.com/stretchr/testify/assert"
 )
 
