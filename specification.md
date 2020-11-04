@@ -114,6 +114,8 @@ debounce   time.Duration // n秒后发射一个数据
 
   - `Debounce()`：该函数实现了仅在过了一段指定的时间还没发射数据时才发射一个数据，并且在该函数的后面定义了 filterOperator，后面的操作实现也是如此方法
 
+  ![debounce](https://mcxiaoke.gitbooks.io/rxdocs/content/images/operators/debounce.png)
+
   ```go
   // 仅在过了一段指定的时间还没发射数据时才发射一个数据
   func (parent *Observable) Debounce(_debounce time.Duration) (o *Observable) {
@@ -138,6 +140,8 @@ debounce   time.Duration // n秒后发射一个数据
   ```
 
   - `Distinct()`：该函数实现了抑制（过滤掉）重复的数据项的功能
+
+  ![distinct](https://mcxiaoke.gitbooks.io/rxdocs/content/images/operators/distinct.png)
 
   ```go
   // 抑制（过滤掉）重复的数据项
@@ -164,6 +168,8 @@ debounce   time.Duration // n秒后发射一个数据
 
   - `ElementAt()`：该函数实现了只发射第 n 个数据
 
+  ![elementAt](https://mcxiaoke.gitbooks.io/rxdocs/content/images/operators/elementAt.png)
+
   ```go
   // 只发射第N项数据
   func (parent *Observable) ElementAt(index int) (o *Observable) {
@@ -188,6 +194,8 @@ debounce   time.Duration // n秒后发射一个数据
   ```
 
   - `First()`：该函数实现了只发射第一项（或者满足某个条件的第一项）数据
+
+  ![first](https://mcxiaoke.gitbooks.io/rxdocs/content/images/operators/first.png)
 
   ```go
   // 只发射第一项（或者满足某个条件的第一项）数据
@@ -215,6 +223,8 @@ debounce   time.Duration // n秒后发射一个数据
 
   - `Last()`：该函数实现了只发射最后一项（或者满足某个条件的最后一项）数据
 
+  ![last](https://mcxiaoke.gitbooks.io/rxdocs/content/images/operators/last.png)
+
   ```go
   // 只发射最后一项（或者满足某个条件的最后一项）数据
   func (parent *Observable) Last() (o *Observable) {
@@ -239,6 +249,8 @@ debounce   time.Duration // n秒后发射一个数据
   ```
 
   - `Sample()`：该函数实现了定期发射Observable最近发射的数据项
+
+  ![sample](https://mcxiaoke.gitbooks.io/rxdocs/content/images/operators/sample.png)
 
   ```go
   // 定期发射Observable最近发射的数据项
@@ -265,6 +277,8 @@ debounce   time.Duration // n秒后发射一个数据
 
   - `Skip()`：该函数实现了抑制Observable发射的前N项数据
 
+  ![skip](https://mcxiaoke.gitbooks.io/rxdocs/content/images/operators/skip.png)
+
   ```go
   // 抑制Observable发射的前N项数据
   func (parent *Observable) Skip(num int) (o *Observable) {
@@ -289,6 +303,8 @@ debounce   time.Duration // n秒后发射一个数据
   ```
 
   - `SkipLast`：该函数实现了抑制Observable发射的后N项数据
+
+  ![skipLast](https://mcxiaoke.gitbooks.io/rxdocs/content/images/operators/skipLast.png)
 
   ```go
   // 抑制Observable发射的后N项数据
@@ -315,6 +331,8 @@ debounce   time.Duration // n秒后发射一个数据
 
   - `Take()`：该函数实现了只发射前面的N项数据
 
+  ![take](https://mcxiaoke.gitbooks.io/rxdocs/content/images/operators/take.png)
+
   ```go
   // 只发射前面的N项数据
   func (parent *Observable) Take(num int) (o *Observable) {
@@ -339,6 +357,8 @@ debounce   time.Duration // n秒后发射一个数据
   ```
 
   - `TakeLast()`：该函数实现了发射Observable发射的最后N项数据
+
+  ![takeLast](https://mcxiaoke.gitbooks.io/rxdocs/content/images/operators/takeLast.n.png)
 
   ```go
   // 发射Observable发射的最后N项数据
